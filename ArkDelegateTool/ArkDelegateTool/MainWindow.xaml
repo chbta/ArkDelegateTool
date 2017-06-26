@@ -1,12 +1,43 @@
 ﻿<Window x:Class="ArkDelegateTool.MainWindow"
+        xmlns:my="clr-namespace:ArkDelegateTool"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArkDelegateTool"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="650" Width="1000">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="buttonLoadVoterInfoTable" Click="buttonLoadVoterInfoTable_Click" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">Load Voter Information</Button>
+                    <Button x:Name="buttonCalculateShares" Click="buttonCalculateShares_Click" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2">Calculate Shares</Button>
+
+                    <Label Grid.Row="0" Grid.Column="1">Start</Label>
+                    <xctk:DateTimePicker x:Name="datetimeStart" Grid.Row="0" Grid.Column="2" Format="Custom"  FormatString="dd/MM/yy HH:mm:ss"></xctk:DateTimePicker>
+                    <Label Grid.Row="1" Grid.Column="1">End</Label>
+                    <xctk:DateTimePicker x:Name="datetimeEnd" Grid.Row="1" Grid.Column="2" Format="Custom"  FormatString="dd/MM/yy HH:mm:ss"></xctk:DateTimePicker>
+                </Grid>
+                <my:VoterInfoTable x:Name="voterInfoTable"></my:VoterInfoTable>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <my:DelegateInfo x:Name="delegateInfo"/>
+                <my:VoterInfo x:Name="voterInfo"/>
+                <my:VoteChart x:Name="voteChart" Margin="15"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
